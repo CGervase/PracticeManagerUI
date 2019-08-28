@@ -99,7 +99,7 @@ import ManageSongs from './ManageSongs';
 import Practices from './Practices';
 import SetLists from './SetLists';
 import ProfileDialog from './ProfileDialog';
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 import TabNames from '../constants/tabNames';
 
 export default {
@@ -118,7 +118,9 @@ export default {
 	}),
 	methods: {
 		...mapMutations({
-			setCurrentTab: 'app/setCurrentTab',
+			setCurrentTab: 'app/setCurrentTab'
+		}),
+		...mapActions({
 			logout: 'user/logout'
 		})
 	},

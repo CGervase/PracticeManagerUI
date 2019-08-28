@@ -15,11 +15,6 @@ const user = {
 			state.signedInUser.id = user.id;
 			state.signedInUser.email = user.email;
 			state.signedInUser.bandName = user.bandName;
-		},
-		logout(state) {
-			state.signedInUser.id = '';
-			state.signedInUser.email = '';
-			state.signedInUser.bandName = '';
 		}
 	},
 	actions: {
@@ -63,12 +58,12 @@ const user = {
 
 			commit('app/setLoading', false, {root: true});
 		},
-		async deleteUserProfile({ commit, state }) {
+		async deleteUserProfile({ commit, state, dispatch }) {
 			commit('app/setLoading', true, {root: true});
 
 			await UserService.deleteUser(state.signedInUser.id)
 				.then(() => {
-					commit('logout');
+					dispatch('logout');
 				})
 				.catch(error => {
 					// eslint-disable-next-line
@@ -77,6 +72,11 @@ const user = {
 				});
 			
 			commit('app/setLoading', false, {root: true});
+		},
+		logout({ commit }) {
+			commit('setSignedInUser', {id: '', email: '', bandName: ''});
+			commit('songs/setSongs', [], {root: true});
+			commit('practices/setPractices', [], {root: true});
 		}
 	}
 };
