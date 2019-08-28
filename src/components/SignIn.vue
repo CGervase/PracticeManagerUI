@@ -36,9 +36,9 @@ export default {
 	},
 	data: () => ({
 		valid: true,
-		email: 'email@email.com',	//SHOULD BE BLANK, CLEAR WHEN NOT DEBUGGING
+		email: '',
 		emailRules: [ v => !!v || 'Email is required' ],
-		password: 'password',		//SHOULD BE BLANK, CLEAR WHEN NOT DEBUGGING
+		password: '',
 		passwordRules: [ v => !!v || 'Password is required']
 	}),
 	methods: {
