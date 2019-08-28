@@ -38,12 +38,8 @@
 					</v-list-tile>
 					<v-divider /><v-divider /><v-divider /><v-divider />
 					<!-- Guest menu options -->
-					<v-list-tile v-show="isGuestAccount">
-						<v-list-tile-title>Sign In</v-list-tile-title>
-					</v-list-tile>
-					<v-divider v-show="isGuestAccount" />
-					<v-list-tile v-show="isGuestAccount">
-						<v-list-tile-title>Create account</v-list-tile-title>
+					<v-list-tile v-show="isGuestAccount" @click="logout">
+						<v-list-tile-title>Back to Login Page</v-list-tile-title>
 					</v-list-tile>
 
 					<!-- User menu options -->
