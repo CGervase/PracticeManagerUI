@@ -34,7 +34,7 @@
 				</template>
 				<v-list>
 					<v-list-tile>
-						<h3>Hello, {{ isGuestAccount ? 'Guest' : signedInUser.bandName }}!</h3>
+						<h3>Hello, {{ isGuestAccount ? 'Guest' : bandName }}!</h3>
 					</v-list-tile>
 					<v-divider /><v-divider /><v-divider /><v-divider />
 					<!-- Guest menu options -->
@@ -122,13 +122,14 @@ export default {
 	},
 	computed: {
 		isUserSignedIn() {
-			return this.signedInUser.id != '';
+			return this.userId != '';
 		},
 		isGuestAccount() {
-			return this.signedInUser.id === 'guest';
+			return this.userId === 'guest';
 		},
 		...mapState({
-			signedInUser: state => state.user.signedInUser,
+			userId: state => state.user.userId,
+			bandName: state => state.user.bandName,
 			snackbar: state => state.app.snackbar,
 			loading: state => state.app.loading,
 			currentTab: state => state.app.currentTab

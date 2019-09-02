@@ -52,15 +52,12 @@ export default {
 			}
 		},
 		signInAsGuest() {
-			let user = {
-				id: 'guest',
-				email: '',
-				bandName: ''
-			}
-			this.setSignedInUser(user);
+			this.setUserId('guest');
+			this.setBandName();
 		},
 		...mapMutations({
-			setSignedInUser: 'user/setSignedInUser'
+			setUserId: 'user/setUserId',
+			setBandName: 'user/setBandName'
 		}),
 		...mapActions({
 			getUserWithCredentials: 'user/getUserWithCredentials'

@@ -29,7 +29,7 @@ const songs = {
 		async addSongToUser({ commit, rootState }, song) {
 			commit('app/setLoading', true, {root: true});
 			
-			let userId = rootState.user.signedInUser.id;
+			let userId = rootState.user.userId;
 
 			if (userId !== 'guest') {
 				await SongService.addSong(userId, song)
@@ -61,7 +61,7 @@ const songs = {
 		async deleteSongFromUser({ commit, rootState }, songId) {
 			commit('app/setLoading', true, {root: true});
 
-			let userId = rootState.user.signedInUser.id;
+			let userId = rootState.user.userId;
 
 			if (userId !== 'guest') {
 				await SongService.deleteSong(userId, songId)
@@ -92,7 +92,7 @@ const songs = {
 		},
 		async editSong({ commit, rootState }, { songId, newName }) {
 			commit('app/setLoading', true, {root: true});
-			let userId = rootState.user.signedInUser.id;
+			let userId = rootState.user.userId;
 
 			if (userId !== 'guest') {
 				await SongService.editSong(userId, songId, newName)
@@ -122,7 +122,7 @@ const songs = {
 			commit('app/setLoading', false, {root: true});
 		},
 		async toggleSongNeedsPractice({ commit, rootState }, songId) {
-			let userId = rootState.user.signedInUser.id;
+			let userId = rootState.user.userId;
 
 			if (userId !== 'guest') {
 				await SongService.toggleSongNeedsPractice(userId, songId)

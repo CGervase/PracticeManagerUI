@@ -31,7 +31,7 @@ const practices = {
 		async addPracticeToUser({ commit, rootState }, practice) {
 			commit('app/setLoading', true, {root: true});
 
-			let userId = rootState.user.signedInUser.id;
+			let userId = rootState.user.userId;
 
 			if (userId !== 'guest') {
 				await PracticeService.addPractice(userId, practice)
@@ -63,7 +63,7 @@ const practices = {
 		async deletePracticeFromUser({ commit, rootState }, practiceId) {
 			commit('app/setLoading', true, {root: true});
 
-			let userId = rootState.user.signedInUser.id;
+			let userId = rootState.user.userId;
 
 			if (userId !== 'guest') {
 				await PracticeService.deletePractice(userId, practiceId)

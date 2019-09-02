@@ -1,4 +1,4 @@
-import { HTTP } from './http-common';
+import { userHTTP } from './http-common';
 
 const route = '/User';
 
@@ -11,19 +11,14 @@ export default {
         });
         let headers = { 'Content-Type': 'application/json' };
         
-        let response = await HTTP.post(requestPath, body, { headers: headers });
+        let response = await userHTTP.post(requestPath, body, { headers: headers });
         return response;
     },
-    async addUser(userDetails) {
+    async addUser(userCredentials) {
         let requestPath = `${route}/addUser`;
-        let body = JSON.stringify(userDetails);
+        let body = JSON.stringify(userCredentials);
         let headers = { 'Content-Type': 'application/json' };
-        let response = await HTTP.post(requestPath, body, { headers: headers });
-        return response;
-    },
-    async deleteUser(userId) {
-        let requestPath = `${route}/deleteUser/${userId}`;
-        let response = await HTTP.delete(requestPath);
+        let response = await userHTTP.post(requestPath, body, { headers: headers });
         return response;
     }
 }

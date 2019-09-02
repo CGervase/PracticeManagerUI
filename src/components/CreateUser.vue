@@ -56,9 +56,7 @@ export default {
 				let userDetails = {
 					email: this.email,
 					password: this.newPassword,
-					bandName: this.bandName,
-					songs: [],
-					practices: []
+					bandName: this.bandName
 				};
 				this.addUser(userDetails);
 				this.closeDialog();

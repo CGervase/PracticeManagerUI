@@ -1,4 +1,4 @@
-import { HTTP } from './http-common';
+import { practiceMgrHTTP } from './http-common';
 
 const route = '/Practice';
 
@@ -7,12 +7,12 @@ export default {
         let requestPath = `${route}/addPractice/${userId}`;
         let body = JSON.stringify(practice);
         let headers = { 'Content-Type': 'application/json' };
-        let response = await HTTP.put(requestPath, body, { headers: headers });
+        let response = await practiceMgrHTTP.put(requestPath, body, { headers: headers });
         return response;
     },
     async deletePractice(userId, practiceId) {
         let requestPath = `${route}/deletePractice/${userId}/${practiceId}`;
-        let response = await HTTP.delete(requestPath);
+        let response = await practiceMgrHTTP.delete(requestPath);
         return response;
     }
 }
